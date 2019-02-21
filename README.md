@@ -1,6 +1,8 @@
 
 ----------
-Firstly, please make sure copy the `schema code` form the `trello.sql` file and then execute your tools or depend on you. also you can use terminator to run the project and type this command `mvn spring-boot:run` if you want to do it.
+Firstly, please make sure copy the `schema code` form the `trello.sql` file and then execute on mysql workbranch tools. 
+Also you can use terminator to run the project and you can type this command `mvn spring-boot:run` if you want.
+
 thanks so much
 
 
