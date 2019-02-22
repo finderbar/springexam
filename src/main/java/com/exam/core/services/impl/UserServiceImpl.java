@@ -42,8 +42,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Long saveUser(final UserBean bean) throws BusinessException {
 		try {
-			int userSeq =  userMapper.saveUser(bean);
-			System.out.println("userSeq ============>"+ userSeq);
+			userMapper.saveUser(bean);
 			return bean.getUserSeq();
 		} catch (SQLException e) {
 			throw new BusinessException("Err, when save user ===>:" + e);

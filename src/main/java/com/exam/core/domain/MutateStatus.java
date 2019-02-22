@@ -23,4 +23,8 @@ public class MutateStatus implements Serializable {
 		this.seq = seq;
 	}
 
+	@Override
+	public String toString() {
+		return "MutateStatus [seq=" + seq + "]";
+	}
 }

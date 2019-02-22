@@ -29,7 +29,7 @@ import com.exam.core.mappers.UserMapper;
 @RunWith(SpringRunner.class)
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class TrelloApplicationTest {
+public class MybatisApplicationTest {
 	
 	@Autowired private UserMapper userMapper;
 	@Autowired private TodoMapper todoMapper;

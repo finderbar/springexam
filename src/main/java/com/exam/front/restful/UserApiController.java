@@ -34,7 +34,7 @@ public class UserApiController {
 	@Autowired RestTemplate restTemplate;
 	
 	@RequestMapping(value = "/getAllUser", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody ResponseEntity<?> getAllUser(
+	public @ResponseBody ResponseEntity<ApiBean<List<UserBean>>> getAllUser(
 			@RequestParam(value = "limit", required = true) final Long pageLimit,
 			@RequestParam(value = "offset", required = true) final Long pageOffset) throws BusinessException {
 
@@ -60,7 +60,7 @@ public class UserApiController {
 	}
 
 	@RequestMapping(value = "/getUser", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody ResponseEntity<?> getUser(
+	public @ResponseBody ResponseEntity<ApiBean<UserBean>> getUser(
 			@RequestParam(value = "userSeq", required = true) final Long userSeq) throws BusinessException {
 
 		logger.info("Get User Params ${userSeq}");
@@ -84,13 +84,10 @@ public class UserApiController {
 	}
 
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST, produces = "application/json")
-	public @ResponseBody ResponseEntity<?> saveUser(
+	public @ResponseBody ResponseEntity<ApiBean<MutateStatus>> saveUser(
 			@RequestParam(value = "userName", required = true) final String userName,
 			@RequestParam(value = "email", required = true) final String email,
 			@RequestParam(value = "avatar", required = false, defaultValue="https://i.imgur.com/GkO21CF.png") final String avatar) throws BusinessException {
-
-		logger.info("Save User params ${username} ${email} ${avatar}");
-
 		ApiBean<MutateStatus> result = new ApiBean<MutateStatus>();
 
 		try {
@@ -114,12 +111,12 @@ public class UserApiController {
 
 			ex.printStackTrace();
 		}
-
+	
 		return new ResponseEntity<ApiBean<MutateStatus>>(result, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/updateUser", method = RequestMethod.PUT, produces = "application/json")
-	public @ResponseBody ResponseEntity<?> modifyUser(
+	public @ResponseBody ResponseEntity<ApiBean<Integer>> modifyUser(
 			@RequestParam(value = "userSeq", required = true) final Long userSeq,
 			@RequestParam(value = "userName", required = true) final String userName,
 			@RequestParam(value = "email", required = false) final String email,
@@ -153,7 +150,7 @@ public class UserApiController {
 	}
 
 	@RequestMapping(value = "/removeUser", method = RequestMethod.DELETE, produces = "application/json")
-	public @ResponseBody ResponseEntity<?> removeUser(
+	public @ResponseBody ResponseEntity<ApiBean<Integer>> removeUser(
 			@RequestParam(value = "userSeq", required = true) final Long userSeq) throws BusinessException {
 
 		logger.info("Remove User params ${username} ${email} ${avatar}");
